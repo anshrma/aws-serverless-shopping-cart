@@ -1,2 +1,5 @@
 .env.local
 .idea
+node_modules/
+package-lock.json
+backend/.aws-sam/build.toml

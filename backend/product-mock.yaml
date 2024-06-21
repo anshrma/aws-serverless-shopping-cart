@@ -1,5 +1,13 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Transform: AWS::Serverless-2016-10-31
+Transform:
+  - AWS::Serverless-2016-10-31
+  - Name: DatadogServerless
+    Parameters:
+      stackName: !Ref "AWS::StackName"
+      pythonLayerVersion: 96
+      extensionLayerVersion: 58
+      site: "datadoghq.com"
+      apiKeySecretArn: "arn:aws:secretsmanager:us-east-1:256151769638:secret:DdApiKeySecret-9KqeTOpeAyI8-X14mVe"
 Description: >
   product-service
 
@@ -13,7 +21,7 @@ Globals:
     Timeout: 5
     Tracing: Active
     AutoPublishAlias: live
-    Runtime: python3.8
+    Runtime: python3.12
     MemorySize: 256
     Environment:
       Variables:
